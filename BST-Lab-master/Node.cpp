@@ -2,9 +2,9 @@
 #include <iostream>
 #include "BST.h"
 
-Node::Node(){
-	cout << "In Node Constructor" << endl;
-}
+// Node::Node(){
+// 	cout << "In Node Constructor" << endl;
+// }
 Node::~Node(){
 	cout << "In Node Destructor" << endl;
 }
@@ -15,7 +15,7 @@ Node::~Node(){
 * @return the data that is stored in this node.
 */
 int Node::getData() const {
-	cout << "In Node getData" << endl;
+	return data;
 }
 
 /*
@@ -24,7 +24,7 @@ int Node::getData() const {
 * @return the left child of this node or null if it doesn't have one.
 */
 Node * Node::getLeftChild() const{
-	cout << "In Node getLeftChild" << endl;
+	return leftChild;
 }
 
 /*
@@ -33,5 +33,5 @@ Node * Node::getLeftChild() const{
 * @return the right child of this node or null if it doesn't have one.
 */
 Node * Node::getRightChild() const{
-	cout << "In Node getRightChild" << endl;
+	return rightChild;
 }

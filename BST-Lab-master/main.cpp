@@ -18,13 +18,34 @@ namespace ta {
 	std::istream& getline(std::istream& is, std::string& line);
 }
 
-
+string BSTtoString(BST* bst);
 int main() {
 
 	std::ifstream ifs; // create the stream to read in from the files
 	std::ofstream ofs; // create the output stream to write to an output file
 	std::string temp; // used to store the current instruction
 	BST* bstptr = NULL;//the BST
+
+	// //TEST CODE
+	
+	// cout << "Starting test code: " << endl;
+	
+	// bstptr = new BST();
+	// bstptr->add(5);
+	// bstptr->add(6);
+	// bstptr->add(3);
+	// bstptr->add(1);
+	// bstptr->add(2);
+	// bstptr->add(9);
+	// bstptr->add(8);
+	
+	// cout << BSTtoString(bstptr) << endl;
+	// bstptr->remove(5);
+	// cout << BSTtoString(bstptr) << endl;
+	// bstptr->clear();
+	// cout << BSTtoString(bstptr) << endl;
+	// return 0;
+	// //END TEST CODE
 
 	for (int i = 0; i < NUM_FILES; i++) {
 		ifs.open(fileArray[i]); // open the file to read from
@@ -104,12 +125,12 @@ string BSTtoString(BST* bst) {
 	queue<NodeInterface*> readQ; // used to read in the levels of the tree, contains Node*
 	stringstream nodeReader_ss; // used to store the values of the nodes and the level-order sequence
 	int depth = 0; // the depth of a node on the tree
-
 	if (bst->getRootNode() == NULL) {
 		return "BST is empty";
 	}
-
-	readQ.push(bst->getRootNode()); // push the root node of the tree into the queue
+	readQ.push(bst->getRootNode()); 
+	// push the root node of the tree into the queue
+	
 
 	while (!readQ.empty()) { // as long as the queue has a remaining node:
 		int i = readQ.size(); // store the number of nodes on this level of the tree
@@ -118,6 +139,7 @@ string BSTtoString(BST* bst) {
 			NodeInterface* nextNode = readQ.front(); // store the next node in the queue
 			nodeReader_ss << nextNode->getData() << " "; // store the data from the node into the ss
 			if (nextNode->getLeftChild() != NULL) { // if there is a left child, push the left child into the queue
+				
 				readQ.push(nextNode->getLeftChild());
 			}
 			if (nextNode->getRightChild() != NULL) { // if there is a right child, push the left child into the queue
